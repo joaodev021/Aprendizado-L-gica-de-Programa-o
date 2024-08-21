@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Álcool ou Gasolina?</title>
+    </head>
+    <body>
+<h3>Álcool ou Gasolina?</h3>
+<script>
+   function pulaLinha() {
+      document.write("<hr>");
+   }
+   var caminhoComGasolina = 480;
+   var consumoComGasolina = 40;
+   var mediaGasolina = caminhoComGasolina / consumoComGasolina;
+   var precoGasolina = 2.90;
+   var precoPorKmGasolina = precoGasolina / mediaGasolina;
+
+
+   var caminhoComAlcool = 300;
+   var consumoComAlcool = 40;
+   var mediaAlcool = caminhoComAlcool / consumoComAlcool;
+   var precoAlcool = 2.40;
+   var precoPorKmAlcool = precoAlcool / mediaAlcool;
+
+   document.write("Consumo com gasolina é: " + mediaGasolina.toFixed(2));
+   pulaLinha();
+   document.write("O preço por Km da gasolina é: " + precoPorKmGasolina.toFixed(2));
+   pulaLinha();
+   document.write("Consumo com Alcool é: " + mediaAlcool.toFixed(2));
+   pulaLinha();
+   document.write("O preço por Km do alcool é: " + precoPorKmAlcool.toFixed(2));
+   pulaLinha();
+
+
+   if (precoPorKmGasolina < precoPorKmAlcool) {
+        document.write("<br>Gasolina é mais vantajosa.");
+   } else {
+        document.write("<br>Álcool é mais vantajoso.")
+   }
+   </script>
+
+ </body>
+    </html>
