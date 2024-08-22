@@ -1,9 +1,8 @@
-```markdown
-# Documentação do Código: Calculadora de IMC
+# Cálculo do IMC - Documentação
 
-**Descrição:**
+## Descrição
 
-Este código é uma página HTML que calcula o Índice de Massa Corporal (IMC) de um usuário com base em seu peso e altura. O cálculo é feito utilizando JavaScript e o resultado é exibido na página. Além disso, a página fornece informações adicionais sobre a relação do IMC do usuário com os limites de magreza e obesidade severa.
+Este código é um programa simples em JavaScript que calcula o Índice de Massa Corporal (IMC) de um usuário. O IMC é uma medida utilizada para avaliar se uma pessoa está dentro do peso ideal com base em sua altura e peso. O programa solicita ao usuário seu nome, peso e altura, calcula o IMC, e exibe uma mensagem personalizada com o resultado e uma interpretação do IMC.
 
 ## Estrutura do Código
 
@@ -16,101 +15,96 @@ Este código é uma página HTML que calcula o Índice de Massa Corporal (IMC) d
     <title>IMC</title>
 </head>
 <body>
-  <!-- O código JavaScript será inserido aqui -->
+  <!-- O código JavaScript é inserido aqui -->
 </body>
 </html>
 ```
 
-- `<!DOCTYPE html>`: Declara o tipo de documento como HTML5.
-- `<html>`: Elemento raiz do documento HTML.
-- `<head>`: Contém metadados e o título da página.
-- `<title>`: Define o título da página que aparece na aba do navegador.
-- `<body>`: Contém o conteúdo visível da página. O código JavaScript é inserido dentro dessa seção.
+O código HTML serve como estrutura para a página web. Neste caso, ele contém a tag `head` onde está o título da página (`IMC`), e a tag `body`, onde o código JavaScript é executado.
 
-### JavaScript
+### Funções JavaScript
 
-```javascript
-<script>
-  function pulaLinha() {
-    document.write("<br>");
-  }
-
-  function mostra(frase) {
-    document.write(frase);
-    pulaLinha();
-  }
-
-  function calculaIMC(peso, altura) {
-      var imc = peso / (altura * altura);
-      return imc;
-  }
-
-  var nomeUsuario = prompt("Boa tarde! Qual é o seu nome?");
-  var pesoDoUsuario = prompt("Bem vindo!(a) qual é o seu peso?");
-  var alturaDoUsuario = prompt("E a sua altura?");
-  var imcDoUsuario = calculaIMC(pesoDoUsuario, alturaDoUsuario);
-
-  mostra(nomeUsuario + " seu imc é: " + imcDoUsuario.toFixed(2));
-  mostra("Você ainda está " + (imcDoUsuario - 18.5).toFixed(2) + " pontos acima do limite da magreza");
-  mostra("Você está " + (35 - imcDoUsuario).toFixed(2) + " longe da obesidade severa");
-</script>
-```
-
-#### Função `pulaLinha`
-
+#### `pulaLinha()`
 ```javascript
 function pulaLinha() {
   document.write("<br>");
 }
 ```
-- Adiciona uma quebra de linha no documento HTML.
+- Objetivo: Essa função insere uma quebra de linha (`<br>`) na página, permitindo que o conteúdo seja exibido em linhas separadas.
+- Uso: Facilitar a formatação do texto exibido.
 
-#### Função `mostra`
-
+#### `mostra(frase)`
 ```javascript
 function mostra(frase) {
   document.write(frase);
   pulaLinha();
 }
 ```
-- Recebe uma string (`frase`) e a escreve na página. Em seguida, chama a função `pulaLinha` para adicionar uma quebra de linha após o texto.
+- Objetivo: Exibir uma frase no documento HTML e adicionar uma quebra de linha logo em seguida.
+- Uso: Para mostrar mensagens e resultados ao usuário.
 
-#### Função `calculaIMC`
-
+#### `calculaIMC(peso, altura)`
 ```javascript
 function calculaIMC(peso, altura) {
-    var imc = peso / (altura * altura);
-    return imc;
+  return peso / (altura * altura);
 }
 ```
-- Recebe o peso e a altura do usuário como parâmetros.
-- Calcula o IMC usando a fórmula: `peso / (altura * altura)`.
-- Retorna o valor calculado do IMC.
+- Objetivo: Calcular o IMC do usuário utilizando a fórmula:
+  \[
+\text{IMC} = \frac{\text{peso}}{\text{altura}^2}
+\]
+- Parâmetros:
+  - `peso`: Peso do usuário em quilogramas.
+  - `altura`: Altura do usuário em metros.
+- **Retorno**: O valor do IMC.
 
-#### Interação com o Usuário
+### Interação com o Usuário
 
 ```javascript
 var nomeUsuario = prompt("Boa tarde! Qual é o seu nome?");
 var pesoDoUsuario = prompt("Bem vindo!(a) qual é o seu peso?");
 var alturaDoUsuario = prompt("E a sua altura?");
 ```
-- Usa a função `prompt` para obter o nome, peso e altura do usuário através de caixas de diálogo.
 
-#### Cálculo e Exibição do IMC
+- Objetivo: Coletar informações do usuário.
+- Função `prompt()`: Exibe uma caixa de diálogo para o usuário inserir dados.
+- Variáveis:
+  - `nomeUsuario`: Armazena o nome do usuário.
+  - `pesoDoUsuario`: Armazena o peso do usuário.
+  - `alturaDoUsuario`: Armazena a altura do usuário.
+
+### Cálculo e Exibição do IMC
 
 ```javascript
 var imcDoUsuario = calculaIMC(pesoDoUsuario, alturaDoUsuario);
-
 mostra(nomeUsuario + " seu imc é: " + imcDoUsuario.toFixed(2));
-mostra("Você ainda está " + (imcDoUsuario - 18.5).toFixed(2) + " pontos acima do limite da magreza");
-mostra("Você está " + (35 - imcDoUsuario).toFixed(2) + " longe da obesidade severa");
 ```
-- Calcula o IMC do usuário chamando a função `calculaIMC`.
-- Usa a função `mostra` para exibir o IMC do usuário e informações adicionais sobre sua condição em relação aos limites de magreza e obesidade severa.
 
-**Explicações Adicionais:**
+- Cálculo do IMC: Chama a função `calculaIMC()` passando o peso e a altura do usuário, armazenando o resultado na variável `imcDoUsuario`.
+- Exibição do IMC: A função `mostra()` exibe o IMC do usuário, formatado com duas casas decimais usando `toFixed(2)`.
 
-- `document.write` é usado para escrever diretamente no documento HTML. Embora seja útil para testes, geralmente não é recomendado para aplicações reais devido a problemas com a substituição do conteúdo da página e falta de flexibilidade. Para projetos mais avançados, considere usar métodos modernos como `innerHTML` ou manipulação do DOM com JavaScript.
+### Interpretação do IMC
 
-- `.toFixed(2)` é utilizado para formatar o número do IMC com duas casas decimais.
+```javascript
+if(imcDoUsuario < 18.5) {
+  mostra("Seu IMC indica você está ABAIXO do peso");
+}
+
+if(imcDoUsuario > 35) {
+  mostra("Seu IMC indica que você está ACIMA do peso");
+}
+
+if(imcDoUsuario >= 18.5 && imcDoUsuario <= 35) {
+  mostra("OK! Seu IMC está entre os dois limites");
+}
 ```
+
+- Condições:
+  - Abaixo do peso: Se o IMC for menor que 18,5.
+  - Acima do peso: Se o IMC for maior que 35.
+  - Peso saudável: Se o IMC estiver entre 18,5 e 35, inclusive.
+- Mensagens: Dependendo do valor do IMC, uma mensagem específica é exibida para o usuário.
+
+## Considerações Finais
+
+Este código é uma excelente introdução ao uso de JavaScript para manipulação de dados e interação com o usuário. Através dele, você praticou a criação de funções, o uso de condições (`if`) e a exibição de resultados em uma página HTML.
