@@ -1,6 +1,6 @@
 <script>
-  function calculaPontos(vitorias, empates) {
-    return (vitorias * 3) + empates;
+  function calculaPontos(vitorias, empates, derrotas) {
+    return (vitorias * 3) + empates - derrotas;
   }
   function pulaLinha() {
   document.write("<br>");
@@ -10,9 +10,11 @@
   }
   var vitoriasNJ = parseInt(prompt("Quantos jogos o NJ vendeu?"));
   var empatesNJ = parseInt(prompt("Quantos jogos o NJ empatou?"));
-  var pontosNJ = calculaPontos(vitoriasNJ, empatesNJ);
+  var derrotasNJ = parseInt(prompt("Quantas derrotas NJ tem?"));
+  var pontosNJ = calculaPontos(vitoriasNJ, empatesNJ, derrotasNJ);
   var vitoriasCDF = parseInt(prompt("Quantos jogos o CDC FC venceu?"));
   var empatesCDF = parseInt(prompt("Quantos jogos o CDC FC empatou?"));
+  var derrotasCDF = parseInt(prompt("Quantas derrotas o CDF FC tem?"));
   var pontosCDF = calculaPontos(vitoriasCDF, empatesCDF);
 
   if (pontosNJ > pontosCDF) {
