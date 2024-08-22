@@ -1,72 +1,88 @@
-### Documentação do Código: Calculando Pontuação do CDC FC
+```markdown
+# Documentação: Cálculo de Pontos em Jogos de Futebol
 
-#### Objetivo do Código
+Este script em JavaScript calcula e compara os pontos de dois times de futebol (NJ e CDF FC) com base no número de vitórias e empates de cada time. O objetivo é determinar qual time está se saindo melhor, pior ou se estão empatados em termos de pontos.
 
-Este código JavaScript calcula e exibe a pontuação do time de futebol "CDC FC" com base no número de vitórias e empates que o time teve. Além disso, compara essa pontuação com a de um time fictício chamado "Livros Velhos" para determinar se o CDC FC está indo melhor ou pior.
+## Estrutura do Código
 
-#### Explicação do Código
+### 1. Função `calculaPontos(vitorias, empates)`
 
-1. Função `pulaLinha()`
-   - Propósito: Esta função insere uma quebra de linha (`<br>`) no documento HTML. Ela é usada para formatar a saída do texto no navegador.
-   - Código:
-     ```javascript
-     function pulaLinha() {
-         document.write("<br>");
-     }
-     ```
+**Descrição:**
+Esta função recebe o número de vitórias e empates como parâmetros e retorna o total de pontos do time.
 
-2. Função `mostra(frase)`
-   - Propósito: Esta função recebe uma string (`frase`) como argumento e a exibe no documento HTML. Após exibir a frase, chama a função `pulaLinha()` para adicionar uma quebra de linha.
-   - Código:
-     ```javascript
-     function mostra(frase) {
-         document.write(frase);
-         pulaLinha();
-     }
-     ```
+**Fórmula usada:**  
+- Cada vitória vale 3 pontos.
+- Cada empate vale 1 ponto.
 
-3. Capturando Input do Usuário
-   - Propósito: O código solicita ao usuário que insira o número de jogos que o CDC FC venceu e empatou. As entradas são obtidas através de duas janelas de prompt.
-   - Detalhe Técnico: A função `prompt()` retorna uma string, então usamos `parseInt()` para converter essa string em um número inteiro.
-   - Código:
-     ```javascript
-     var vitorias = parseInt(prompt("Quantos jogos o CDC FC venceu?"));
-     var empates = parseInt(prompt("Quantos jogos o CDC FC empatou?"));
-     ```
+**Código:**
+```javascript
+function calculaPontos(vitorias, empates) {
+  return (vitorias * 3) + empates;
+}
+```
 
-4. Calculando a Pontuação
-   - Propósito: A pontuação do time é calculada com base na fórmula:
-     \[
-     \text{pontos} = (\text{vitorias} \times 3) + \text{empates}
-     \]
-     Cada vitória vale 3 pontos, e cada empate vale 1 ponto.
-   - Código:
-     ```javascript
-     var pontos = (vitorias * 3) + empates;
-     ```
+**Exemplo de uso:*
+Se um time tem 4 vitórias e 2 empates, a função calculará os pontos como:
+\[ \text{Pontos} = (4 \times 3) + 2 = 14 \text{ pontos} \]
 
-5. Exibindo a Pontuação
-   - Propósito: O código exibe a pontuação do time usando a função `mostra()`.
-   - Código:
-     ```javascript
-     mostra("Nosso time tem " + pontos + " pontos!");
-     ```
+### 2. Função `pulaLinha()`
 
-6. Comparação com o Time "Livros Velhos"
-   - Propósito: O código compara a pontuação do CDC FC com o valor 28 (a pontuação do "Livros Velhos") e exibe uma mensagem indicando se o CDC FC está indo melhor ou pior.
-   - Código:
-     ```javascript
-     if (pontos > 28) {
-         mostra("Nosso time está indo MELHOR que o Livros velhos");
-     }
-     if (pontos < 28) {
-         mostra("Nosso time está indo PIOR que o Livros velhos");
-     }
-     ```
+**Descrição:**  
+Esta função insere uma quebra de linha na página HTML, facilitando a organização do texto exibido.
 
-#### Possíveis Melhorias
-- Considerar o Caso de Igualdade: Atualmente, o código só compara se a pontuação é maior ou menor que 28. Seria interessante adicionar um caso onde a pontuação é igual a 28, para uma comparação mais completa.
-- Uso de `console.log`: Para facilitar a depuração, o uso de `console.log` ao invés de `document.write` pode ser uma boa prática, especialmente durante o desenvolvimento.
+**Código:**
+```javascript
+function pulaLinha() {
+  document.write("<br>");
+}
+```
 
-#### Conclusão
-Este código simples e eficaz permite que você pratique conceitos básicos de programação, como captura de input do usuário, funções, e lógica condicional. Ele é uma excelente introdução ao uso de JavaScript para manipular conteúdo em páginas web.
+### 3. Função `mostra(frase)`
+
+**Descrição:**  
+Esta função recebe uma frase como parâmetro e a exibe na página HTML.
+
+**Código:**
+```javascript
+function mostra(frase) {
+  document.write(frase);
+}
+```
+
+### 4. Interação com o Usuário
+
+O código solicita ao usuário, por meio de caixas de diálogo (`prompt`), o número de vitórias e empates de dois times: NJ e CDF FC. Esses valores são convertidos de texto para número inteiro usando `parseInt`.
+
+**Código:**
+```javascript
+var vitoriasNJ = parseInt(prompt("Quantos jogos o NJ venceu?"));
+var empatesNJ = parseInt(prompt("Quantos jogos o NJ empatou?"));
+var pontosNJ = calculaPontos(vitoriasNJ, empatesNJ);
+
+var vitoriasCDF = parseInt(prompt("Quantos jogos o CDF FC venceu?"));
+var empatesCDF = parseInt(prompt("Quantos jogos o CDF FC empatou?"));
+var pontosCDF = calculaPontos(vitoriasCDF, empatesCDF);
+```
+
+### 5. Comparação dos Pontos
+
+Após calcular os pontos dos dois times, o código compara os resultados e exibe uma mensagem apropriada.
+
+**Código:**
+```javascript
+if (pontosNJ > pontosCDF) {
+  mostra("O time NJ está indo MELHOR que o CDF");
+}
+if (pontosNJ < pontosCDF) {
+  mostra("O time NJ está indo PIOR que o CDF");
+}
+if (pontosNJ == pontosCDF) {
+  mostra("O time NJ está EMPATADO com o CDF");
+}
+```
+
+**Explicação:**  
+- Se o número de pontos do NJ for maior que o do CDF FC, exibe que o NJ está indo melhor.
+- Se for menor, exibe que o NJ está indo pior.
+- Se for igual, indica que ambos estão empatados.
+```

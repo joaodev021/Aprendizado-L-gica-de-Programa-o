@@ -1,20 +1,27 @@
 <script>
+  function calculaPontos(vitorias, empates) {
+    return (vitorias * 3) + empates;
+  }
   function pulaLinha() {
-      document.write("<br>");
+  document.write("<br>");
   }
-
   function mostra(frase) {
-      document.write(frase);
-      pulaLinha();
+  document.write(frase);
   }
-  var vitorias = parseInt(prompt("Quantos jogos o CDC FC venceu?"));
-  var empates = parseInt (prompt("Quantos jogos o CDC FC empatou?"));
-  var pontos = (vitorias * 3) + empates;
-  mostra("Nosso time tem " + pontos + " pontos!");
-  if (pontos > 28) {
-  mostra("Nosso time está indo MELHOR que o Livros velhos");
+  var vitoriasNJ = parseInt(prompt("Quantos jogos o NJ vendeu?"));
+  var empatesNJ = parseInt(prompt("Quantos jogos o NJ empatou?"));
+  var pontosNJ = calculaPontos(vitoriasNJ, empatesNJ);
+  var vitoriasCDF = parseInt(prompt("Quantos jogos o CDC FC venceu?"));
+  var empatesCDF = parseInt(prompt("Quantos jogos o CDC FC empatou?"));
+  var pontosCDF = calculaPontos(vitoriasCDF, empatesCDF);
+
+  if (pontosNJ > pontosCDF) {
+  mostra(" O time NJ está indo MELHOR que o CDF");
   }
-  if (pontos < 28) {
-  mostra("Nosso time está indo PIOR que o Livros velhos");
+  if (pontosNJ < pontosCDF) {
+  mostra("O time NJ está indo PIOR que o CDF");
   }
-</script>
+  if (pontosNJ == pontosCDF) {
+  mostra("O time NJ está EMPATADO com o CDF");
+  }
+ </script>
